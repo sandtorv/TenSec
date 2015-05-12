@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>2FDC6822-4EDD-47E5-BC35-BD9B41DB85FD</string>
+	<key>IDESourceControlProjectName</key>
+	<string>TenSec</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>6D502732BD0DD4EA1FB1E07A269222387117906C</key>
+		<string>https://bitbucket.org/sandtorv/tensec-ios.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>TenSec.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>6D502732BD0DD4EA1FB1E07A269222387117906C</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://bitbucket.org/sandtorv/tensec-ios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>6D502732BD0DD4EA1FB1E07A269222387117906C</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>6D502732BD0DD4EA1FB1E07A269222387117906C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>tensec-ios</string>
+		</dict>
+	</array>
+</dict>
+</plist>

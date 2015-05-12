@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BV1-FR-VrT">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Game View Controller-->
+        <scene sceneID="tXr-a1-R10">
+            <objects>
+                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="TenSec" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="maK-i9-Uhn"/>
+                        <viewControllerLayoutGuide type="bottom" id="khH-OB-KpY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JN5-C8-cKr">
+                                <rect key="frame" x="257" y="557" width="86" height="35"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="20"/>
+                                <state key="normal" title="Quit game">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="1" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="stopButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="mIL-M2-qo0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="te9-Nt-ieL">
+                                <rect key="frame" x="238" y="328" width="124" height="40"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="24"/>
+                                <state key="normal" title="Infinite game">
+                                    <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="infiniteGame:" destination="BV1-FR-VrT" eventType="touchUpInside" id="QQL-wM-B1K"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yQK-kP-i3V">
+                                <rect key="frame" x="249" y="423" width="103" height="38"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="22"/>
+                                <state key="normal" title="Scoreboard">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showGameCenter:" destination="BV1-FR-VrT" eventType="touchUpInside" id="F2P-MD-VHj"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uG5-eo-YOz">
+                                <rect key="frame" x="16" y="563" width="568" height="23"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="20"/>
+                                <color key="textColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="toY-4X-jFQ">
+                                <rect key="frame" x="16" y="532" width="568" height="23"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="20"/>
+                                <color key="textColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time left: 9" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brn-DG-nDB">
+                                <rect key="frame" x="16" y="20" width="147" height="29"/>
+                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Yq-bu-yQU">
+                                <rect key="frame" x="562" y="20" width="22" height="22"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="helpButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="i44-eV-uFm"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click! Click! Click!" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MC0-rY-Xbk">
+                                <rect key="frame" x="187" y="282" width="227" height="34.5"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="30"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dh2-Pv-uf9">
+                                <rect key="frame" x="234" y="280" width="133" height="40"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="24"/>
+                                <state key="normal" title="Normal game">
+                                    <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.40000000596046448" green="1" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="startButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="7Cd-hw-J9X"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="deviceRGB"/>
+                        <constraints>
+                            <constraint firstItem="khH-OB-KpY" firstAttribute="top" secondItem="uG5-eo-YOz" secondAttribute="bottom" constant="14" id="64U-qn-Yai"/>
+                            <constraint firstItem="uG5-eo-YOz" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leadingMargin" id="7LP-ge-dwF"/>
+                            <constraint firstItem="yQK-kP-i3V" firstAttribute="top" secondItem="te9-Nt-ieL" secondAttribute="bottom" constant="55" id="85A-JD-4jl"/>
+                            <constraint firstItem="brn-DG-nDB" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leadingMargin" id="9mO-q8-ET4"/>
+                            <constraint firstAttribute="centerX" secondItem="JN5-C8-cKr" secondAttribute="centerX" constant="2.5" id="ABN-iU-O58"/>
+                            <constraint firstItem="khH-OB-KpY" firstAttribute="top" secondItem="JN5-C8-cKr" secondAttribute="bottom" constant="8" id="DfW-Lq-XJP"/>
+                            <constraint firstItem="toY-4X-jFQ" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leadingMargin" id="Kzg-7u-85A"/>
+                            <constraint firstItem="dh2-Pv-uf9" firstAttribute="leading" secondItem="te9-Nt-ieL" secondAttribute="trailing" constant="-91" id="Orh-Nv-aSy"/>
+                            <constraint firstItem="uG5-eo-YOz" firstAttribute="top" secondItem="toY-4X-jFQ" secondAttribute="bottom" constant="-4" id="Sfu-Cl-h0M"/>
+                            <constraint firstItem="te9-Nt-ieL" firstAttribute="top" secondItem="dh2-Pv-uf9" secondAttribute="bottom" constant="8" id="UHG-Rw-VJl"/>
+                            <constraint firstAttribute="centerX" secondItem="dh2-Pv-uf9" secondAttribute="centerX" constant="-0.5" id="UsH-GE-5qf"/>
+                            <constraint firstAttribute="centerX" secondItem="te9-Nt-ieL" secondAttribute="centerX" constant="-0.5" id="XU0-he-hkK"/>
+                            <constraint firstItem="uG5-eo-YOz" firstAttribute="top" secondItem="toY-4X-jFQ" secondAttribute="bottom" constant="8" id="Y0t-hb-GKL"/>
+                            <constraint firstAttribute="centerX" secondItem="JN5-C8-cKr" secondAttribute="centerX" constant="-0.5" id="b7n-Je-HnA"/>
+                            <constraint firstAttribute="centerX" secondItem="yQK-kP-i3V" secondAttribute="centerX" constant="-0.5" id="bcy-Gj-de8"/>
+                            <constraint firstAttribute="centerY" secondItem="dh2-Pv-uf9" secondAttribute="centerY" id="dmW-CC-ykT"/>
+                            <constraint firstAttribute="centerY" secondItem="MC0-rY-Xbk" secondAttribute="centerY" constant="0.5" id="f8K-PW-NYS"/>
+                            <constraint firstItem="uG5-eo-YOz" firstAttribute="trailing" secondItem="3se-qz-xqx" secondAttribute="trailingMargin" id="hHh-xX-x8B"/>
+                            <constraint firstAttribute="centerY" secondItem="JN5-C8-cKr" secondAttribute="centerY" id="hfK-F4-Bh9"/>
+                            <constraint firstAttribute="centerX" secondItem="MC0-rY-Xbk" secondAttribute="centerX" constant="-0.5" id="j3n-io-ncw"/>
+                            <constraint firstItem="yQK-kP-i3V" firstAttribute="top" secondItem="te9-Nt-ieL" secondAttribute="bottom" constant="8" id="qiG-Yk-kkp"/>
+                            <constraint firstItem="brn-DG-nDB" firstAttribute="top" secondItem="maK-i9-Uhn" secondAttribute="bottom" id="xDR-56-z8l"/>
+                            <constraint firstItem="toY-4X-jFQ" firstAttribute="trailing" secondItem="3se-qz-xqx" secondAttribute="trailingMargin" id="z7b-jT-ZaP"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Orh-Nv-aSy"/>
+                                <exclude reference="qiG-Yk-kkp"/>
+                                <exclude reference="Sfu-Cl-h0M"/>
+                                <exclude reference="ABN-iU-O58"/>
+                                <exclude reference="hfK-F4-Bh9"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="currentScore" destination="brn-DG-nDB" id="CBh-4S-CEa"/>
+                        <outlet property="gameCenter" destination="yQK-kP-i3V" id="9Xc-3C-0Rm"/>
+                        <outlet property="highscoreLabel" destination="toY-4X-jFQ" id="vFk-eK-tyf"/>
+                        <outlet property="infiniteGame" destination="te9-Nt-ieL" id="7Ds-7R-UwV"/>
+                        <outlet property="startButton" destination="dh2-Pv-uf9" id="vml-kI-fhB"/>
+                        <outlet property="startTextLabel" destination="MC0-rY-Xbk" id="seE-5c-8ey"/>
+                        <outlet property="stopButton" destination="JN5-C8-cKr" id="R6Y-qf-x5f"/>
+                        <outlet property="totalClickLabel" destination="uG5-eo-YOz" id="z0X-pl-0Kd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
