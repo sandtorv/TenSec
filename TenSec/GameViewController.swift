@@ -150,6 +150,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GKCh
         gameActive = 1
         scoreCount = 0
         self.hideButtons()
+        self.currentScore?.hidden = true
         self.stopButton?.hidden  = false
     }
     
