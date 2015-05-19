@@ -9,9 +9,6 @@
 import SpriteKit
 
 class GameScene: SKScene {
-
-    //Init buttons
-    
     
     override func didMoveToView(view: SKView) {
         self.physicsWorld.gravity.dy = -9.8
@@ -44,21 +41,8 @@ class GameScene: SKScene {
         }
     }
     
-    // Generates a random color
-    func newRandomColor() -> UIColor{
-        var red:CGFloat = CGFloat(drand48())
-        var green:CGFloat = CGFloat(drand48())
-        var blue:CGFloat = CGFloat(drand48())
-        return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
-    }
-
-    // Generates a random number
-    func randomNumber() -> CGFloat{
-        var number:CGFloat = CGFloat(drand48()*150)
-        return number
-    }
-    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+        
     }
 }

@@ -12,22 +12,34 @@
 	<dict>
 		<key>6D502732BD0DD4EA1FB1E07A269222387117906C</key>
 		<string>https://bitbucket.org/sandtorv/tensec-ios.git</string>
+		<key>DFF1DA8CD0F54F7E100649FD74BF74E3DF4DBEFA</key>
+		<string>https://github.com/sandtorv/TenSec.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>TenSec.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>6D502732BD0DD4EA1FB1E07A269222387117906C</key>
+		<string>../../../tensec-ios</string>
+		<key>DFF1DA8CD0F54F7E100649FD74BF74E3DF4DBEFA</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://bitbucket.org/sandtorv/tensec-ios.git</string>
+	<string>https://github.com/sandtorv/TenSec.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>6D502732BD0DD4EA1FB1E07A269222387117906C</string>
+	<string>DFF1DA8CD0F54F7E100649FD74BF74E3DF4DBEFA</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DFF1DA8CD0F54F7E100649FD74BF74E3DF4DBEFA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>TenSec</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

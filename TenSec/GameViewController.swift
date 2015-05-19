@@ -10,30 +10,6 @@ import UIKit
 import SpriteKit
 import GameKit
 
-// What game type
-var gameType:Int = 0
-// Initialize var/int/etc for game handling
-var gameActive:Int = 0
-var gameOver:Int = 0
-// Score
-var scoreCount:Int = 0
-
-extension SKNode {
-    class func unarchiveFromFile(file : NSString) -> SKNode? {
-        if let path = NSBundle.mainBundle().pathForResource(file as String, ofType: "sks") {
-            var sceneData = NSData(contentsOfFile: path, options: .DataReadingMappedIfSafe, error: nil)!
-            var archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
-            
-            archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
-            let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! GameScene
-            archiver.finishDecoding()
-            return scene
-        } else {
-            return nil
-        }
-    }
-}
-
 class GameViewController: UIViewController, GKGameCenterControllerDelegate, GKChallengeListener, GKLocalPlayerListener{
     // Init buttons
     @IBOutlet weak var startButton : UIButton?
@@ -137,6 +113,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GKCh
     
     @IBAction func startButton(sender: AnyObject) {
         println("startButton")
+        oldGameScore = 0
         gameOver = 0
         gameActive = 1
         scoreCount = 0
@@ -148,7 +125,8 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GKCh
         println("infiniteGame")
         gameOver = 0
         gameActive = 1
-        scoreCount = 0
+        scoreCount = NSUserDefaults.standardUserDefaults().integerForKey("totalScore")
+        oldGameScore = NSUserDefaults.standardUserDefaults().integerForKey("totalScore")
         self.hideButtons()
         self.currentScore?.hidden = true
         self.stopButton?.hidden  = false
@@ -178,7 +156,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GKCh
             if ((viewController) != nil) {
                 self.presentViewController(viewController, animated: true, completion: nil)
             }else{
-                println("PLayer authenticated: \(GKLocalPlayer.localPlayer().authenticated)")
+                println("Player authenticated: \(GKLocalPlayer.localPlayer().authenticated)")
             }
         }
     }
@@ -192,7 +170,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GKCh
     
     func updateScore(){
         self.updateTotalScore()
-        var score = scoreCount
+        var score:Int = scoreCount
         
         if score > NSUserDefaults.standardUserDefaults().integerForKey("highscore") {
             NSUserDefaults.standardUserDefaults().setInteger(score, forKey: "highscore")
@@ -214,7 +192,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GKCh
     }
     
     func updateTotalScore(){
-        var score = scoreCount + NSUserDefaults.standardUserDefaults().integerForKey("totalScore")
+        var score = (scoreCount - oldGameScore) + NSUserDefaults.standardUserDefaults().integerForKey("totalScore")
         println("Score is \(score)")
         if score > NSUserDefaults.standardUserDefaults().integerForKey("totalScore") {
             NSUserDefaults.standardUserDefaults().setInteger(score, forKey: "totalScore")
