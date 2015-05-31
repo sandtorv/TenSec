@@ -25,18 +25,22 @@ class GameScene: SKScene {
                 sprite.fontSize = randomNumber()
                 sprite.fontColor = newRandomColor()
                 sprite.position = location
-                sprite.text = String(scoreCount + 1)
                 sprite.physicsBody = SKPhysicsBody(circleOfRadius: sprite.fontSize/1.33)
                 sprite.physicsBody?.dynamic = true
+                if(gameType == 0){
+                    scoreCountSingle++
+                    sprite.text = String(scoreCountSingle)
+                    
+                } else{
+                    scoreCountInfinite++
+                    sprite.text = String(scoreCountInfinite)
+                }
                 let scale = SKAction.scaleBy(4, duration: 2)
                 let fade  = SKAction.fadeAlphaBy(0, duration: 1)
-                
-                
                 let sequence = SKAction.sequence([scale, fade]);
                 
                 sprite.runAction(sequence);
                 self.addChild(sprite)
-                scoreCount++
             }
         }
     }

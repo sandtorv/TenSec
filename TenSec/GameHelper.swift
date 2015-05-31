@@ -17,7 +17,8 @@ var gameActive:Int = 0
 var gameOver:Int = 0
 var oldGameScore:Int = 0
 // Score
-var scoreCount:Int = 0
+var scoreCountSingle:Int = 0
+var scoreCountInfinite:Int = 0
 
 // Generates a random color
 func newRandomColor() -> UIColor{

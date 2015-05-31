@@ -71,7 +71,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GKCh
             elapsedTime -= NSTimeInterval(seconds)
             self.currentScore?.text = String("Time left: \(Int(seconds))")
             println("\(Int(seconds))")
-            if(scoreCount > 0){
+            if(scoreCountSingle > 0){
                 self.startTextLabel?.hidden = true
             }
         } else {
@@ -113,19 +113,21 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GKCh
     
     @IBAction func startButton(sender: AnyObject) {
         println("startButton")
+        gameType = 0
         oldGameScore = 0
         gameOver = 0
         gameActive = 1
-        scoreCount = 0
+        scoreCountSingle = 0
         self.hideButtons()
         self.gameCountdown()
     }
     
     @IBAction func infiniteGame(sender: AnyObject) {
         println("infiniteGame")
+        gameType = 1
         gameOver = 0
         gameActive = 1
-        scoreCount = NSUserDefaults.standardUserDefaults().integerForKey("totalScore")
+        scoreCountInfinite = NSUserDefaults.standardUserDefaults().integerForKey("totalScore")
         oldGameScore = NSUserDefaults.standardUserDefaults().integerForKey("totalScore")
         self.hideButtons()
         self.currentScore?.hidden = true
@@ -138,15 +140,6 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GKCh
         gameActive = 0
         self.showButtons()
         self.updateScore()
-    }
-    
-    // Opens the how to play alert
-    @IBAction func helpButton(sender: AnyObject) {
-        let alertController = UIAlertController(title: "How to play", message:
-            "In normal mode you have 10 seconds to click as many times as possible. \n In infinite mode you can play for as long as you'd like, to increase the total clicks. \n Everything is connected to Game Center so you can compare your scores with the world! \n Close this box and get back to the game. ", preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "Got it!", style: UIAlertActionStyle.Default,handler: nil))
-        
-        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     // Game center functions
@@ -170,7 +163,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GKCh
     
     func updateScore(){
         self.updateTotalScore()
-        var score:Int = scoreCount
+        var score:Int = scoreCountSingle
         
         if score > NSUserDefaults.standardUserDefaults().integerForKey("highscore") {
             NSUserDefaults.standardUserDefaults().setInteger(score, forKey: "highscore")
@@ -192,7 +185,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GKCh
     }
     
     func updateTotalScore(){
-        var score = (scoreCount - oldGameScore) + NSUserDefaults.standardUserDefaults().integerForKey("totalScore")
+        var score = scoreCountInfinite
         println("Score is \(score)")
         if score > NSUserDefaults.standardUserDefaults().integerForKey("totalScore") {
             NSUserDefaults.standardUserDefaults().setInteger(score, forKey: "totalScore")
