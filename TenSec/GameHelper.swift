@@ -16,16 +16,39 @@ var gameType:Int = 0
 var gameActive:Int = 0
 var gameOver:Int = 0
 var oldGameScore:Int = 0
+
 // Score
 var scoreCountSingle:Int = 0
 var scoreCountInfinite:Int = 0
 
+// Theme variables
+var darkColor: UIColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1)
+var lightColor: UIColor = UIColor.whiteColor()
+var colorForText: UIColor = UIColor.clearColor()
+var colorThemeLight: Bool = NSUserDefaults.standardUserDefaults().boolForKey("colorThemeLight")
+
+func changeColorTheme()->Bool{
+    colorThemeLight = !colorThemeLight
+    NSUserDefaults.standardUserDefaults().setBool(colorThemeLight, forKey: "colorThemeLight")
+    NSUserDefaults.standardUserDefaults().synchronize()
+    return true
+}
+
 // Generates a random color
-func newRandomColor() -> UIColor{
+func randomUIColor() -> UIColor{
     var red:CGFloat = CGFloat(drand48())
     var green:CGFloat = CGFloat(drand48())
     var blue:CGFloat = CGFloat(drand48())
     return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+}
+
+
+// Generates a random color
+func randomSKColor() -> SKColor{
+    var red:CGFloat = CGFloat(drand48())
+    var green:CGFloat = CGFloat(drand48())
+    var blue:CGFloat = CGFloat(drand48())
+    return SKColor(red: red, green: green, blue: blue, alpha: 1.0)
 }
 
 // Generates a random number

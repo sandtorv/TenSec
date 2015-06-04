@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import UIKit
 
 class GameScene: SKScene {
     
@@ -23,7 +24,7 @@ class GameScene: SKScene {
                 
                 let sprite = SKLabelNode (fontNamed: "GillSans")
                 sprite.fontSize = randomNumber()
-                sprite.fontColor = newRandomColor()
+                sprite.fontColor = randomUIColor()
                 sprite.position = location
                 sprite.physicsBody = SKPhysicsBody(circleOfRadius: sprite.fontSize/1.33)
                 sprite.physicsBody?.dynamic = true
@@ -35,11 +36,9 @@ class GameScene: SKScene {
                     scoreCountInfinite++
                     sprite.text = String(scoreCountInfinite)
                 }
-                let scale = SKAction.scaleBy(4, duration: 2)
-                let fade  = SKAction.fadeAlphaBy(0, duration: 1)
-                let sequence = SKAction.sequence([scale, fade]);
                 
-                sprite.runAction(sequence);
+                var scale = SKAction.scaleBy(4, duration: 2)
+                sprite.runAction(scale)
                 self.addChild(sprite)
             }
         }

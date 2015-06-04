@@ -38,6 +38,8 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GKCh
         self.currentScore?.hidden = true
         self.startTextLabel?.hidden = true
         
+        textColor()
+        
         // Determin screen size
         let screenSize: CGRect = UIScreen.mainScreen().bounds
 
@@ -159,6 +161,25 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GKCh
         gcViewController.gameCenterDelegate = self
         gcViewController.viewState = GKGameCenterViewControllerState.Leaderboards
         self.presentViewController(gcViewController, animated: true, completion: nil)
+    }
+    
+    @IBAction func changeTextColor(){
+        if(changeColorTheme()){
+            textColor()
+        }
+    }
+    
+    func textColor(){
+        colorThemeLight = NSUserDefaults.standardUserDefaults().boolForKey("colorThemeLight")
+        if(colorThemeLight){
+            colorForText = lightColor
+        } else{
+            colorForText = darkColor
+        }
+        highscoreLabel?.textColor = colorForText
+        totalClickLabel?.textColor = colorForText
+        currentScore?.textColor = colorForText
+        startTextLabel?.textColor = colorForText
     }
     
     func updateScore(){
