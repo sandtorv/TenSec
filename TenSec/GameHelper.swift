@@ -25,7 +25,10 @@ var scoreCountInfinite:Int = 0
 var darkColor: UIColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1)
 var lightColor: UIColor = UIColor.whiteColor()
 var colorForText: UIColor = UIColor.clearColor()
+var viewBGColor: UIColor = UIColor.clearColor()
 var colorThemeLight: Bool = NSUserDefaults.standardUserDefaults().boolForKey("colorThemeLight")
+
+var colorSchemeButtonImg: UIImage = UIImage()
 
 func changeColorTheme()->Bool{
     colorThemeLight = !colorThemeLight

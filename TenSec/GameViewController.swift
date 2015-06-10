@@ -12,14 +12,15 @@ import GameKit
 
 class GameViewController: UIViewController, GKGameCenterControllerDelegate, GKChallengeListener, GKLocalPlayerListener{
     // Init buttons
-    @IBOutlet weak var startButton : UIButton?
-    @IBOutlet weak var infiniteGame: UIButton?
-    @IBOutlet weak var stopButton  : UIButton?
-    @IBOutlet weak var gameCenter  : UIButton?
-    @IBOutlet weak var highscoreLabel  : UILabel?
-    @IBOutlet weak var totalClickLabel : UILabel?
-    @IBOutlet weak var currentScore    : UILabel?
-    @IBOutlet weak var startTextLabel  : UILabel?
+    @IBOutlet weak var startButton : UIButton!
+    @IBOutlet weak var infiniteGame: UIButton!
+    @IBOutlet weak var stopButton  : UIButton!
+    @IBOutlet weak var gameCenter  : UIButton!
+    @IBOutlet weak var colorSchemeButton: UIButton!
+    @IBOutlet weak var highscoreLabel  : UILabel!
+    @IBOutlet weak var currentScore    : UILabel!
+    @IBOutlet weak var startTextLabel  : UILabel!
+    @IBOutlet weak var userText: UILabel!
     
     // Countdown variables
     var startTime = NSTimeInterval()
@@ -33,36 +34,40 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GKCh
         
         self.updateScoreLabel()
         
+        gameCenter.setImage(UIImage(named: "LeaderboardDeactivated"), forState: .Disabled)
+        
         self.startButton?.hidden  = false
         self.stopButton?.hidden   = true
         self.currentScore?.hidden = true
         self.startTextLabel?.hidden = true
         
-        textColor()
-        
         // Determin screen size
         let screenSize: CGRect = UIScreen.mainScreen().bounds
 
         if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
-            // Configure the view.
             let skView = self.view as! SKView
-            // skView.showsFPS = true
-            // skView.showsNodeCount = true
-            /* Sprite Kit applies additional optimizations to improve rendering performance */
             skView.ignoresSiblingOrder = true
-            
-            /* Set the scale mode to scale to fit the window */
             scene.scaleMode = .AspectFill
-            
             skView.presentScene(scene)
         }
     }
 
+    override func viewDidAppear(animated: Bool) {
+        textColor()
+        if(GKLocalPlayer.localPlayer().authenticated){
+            userText.text = "Welcome \(GKLocalPlayer.localPlayer().alias)"
+            gameCenter.enabled = false
+        } else {
+            userText.text = "Welcome to \(UIDevice.currentDevice().name)\n log in to GameCenter to compare your scores"
+            gameCenter.enabled = false
+        }
+    }
     
     func gameCountdown(){
         let aSelector : Selector = "updateTime"
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: aSelector, userInfo: nil, repeats: true)
         startTime = NSDate.timeIntervalSinceReferenceDate()
+        self.currentScore.text = "10"
     }
 
     func updateTime() {
@@ -71,10 +76,10 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GKCh
         var seconds = gameTime-elapsedTime
         if seconds > 0 {
             elapsedTime -= NSTimeInterval(seconds)
-            self.currentScore?.text = String("Time left: \(Int(seconds))")
+            self.currentScore.text = "\(Int(ceil(seconds)))"
             println("\(Int(seconds))")
             if(scoreCountSingle > 0){
-                self.startTextLabel?.hidden = true
+                self.startTextLabel.hidden = true
             }
         } else {
             self.stopButton(self)
@@ -85,32 +90,38 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GKCh
     func updateScoreLabel(){
         var highscore   =  NSUserDefaults.standardUserDefaults().integerForKey("highscore")
         var totalClicks = NSUserDefaults.standardUserDefaults().integerForKey("totalScore")
-        self.highscoreLabel?.text = ("Highscore is \(highscore) clicks")
-        self.totalClickLabel?.text = ("Totally \(totalClicks) clicks")
+        if(totalClicks > 0 && highscore > 0){
+             self.highscoreLabel?.text = ("Max \(highscore) , \(totalClicks) total clicks")
+        } else{
+            self.highscoreLabel?.text = "No highscore reported yet"
+        }
     }
     
     // Hide game buttons
     func hideButtons(){
-        self.startButton?.hidden  = true
-        self.infiniteGame?.hidden = true
-        self.stopButton?.hidden   = true
-        self.gameCenter?.hidden   = true
-        self.highscoreLabel?.hidden  = true
-        self.totalClickLabel?.hidden = true
-        self.currentScore?.hidden = false
-        self.startTextLabel?.hidden = false
+        startButton.hidden  = true
+        infiniteGame.hidden = true
+        stopButton.hidden   = true
+        gameCenter.hidden   = true
+        colorSchemeButton.hidden = true
+        highscoreLabel.hidden  = true
+        userText.hidden = true
+        currentScore.hidden = false
+        startTextLabel.hidden = false
+        stopButton.hidden  = false
     }
     
     // Show game buttons
     func showButtons(){
-        self.startButton?.hidden  = false
-        self.infiniteGame?.hidden = false
-        self.stopButton?.hidden   = true
-        self.gameCenter?.hidden   = false
-        self.highscoreLabel?.hidden  = false
-        self.totalClickLabel?.hidden = false
-        self.currentScore?.hidden    = true
-        self.startTextLabel?.hidden  = true
+        startButton.hidden  = false
+        infiniteGame.hidden = false
+        stopButton.hidden   = true
+        gameCenter.hidden   = false
+        colorSchemeButton.hidden = false
+        highscoreLabel.hidden  = false
+        userText.hidden = false
+        currentScore.hidden    = true
+        startTextLabel.hidden  = true
     }
     
     @IBAction func startButton(sender: AnyObject) {
@@ -120,8 +131,8 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GKCh
         gameOver = 0
         gameActive = 1
         scoreCountSingle = 0
-        self.hideButtons()
-        self.gameCountdown()
+        hideButtons()
+        gameCountdown()
     }
     
     @IBAction func infiniteGame(sender: AnyObject) {
@@ -133,7 +144,6 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GKCh
         oldGameScore = NSUserDefaults.standardUserDefaults().integerForKey("totalScore")
         self.hideButtons()
         self.currentScore?.hidden = true
-        self.stopButton?.hidden  = false
     }
     
     @IBAction func stopButton(sender: AnyObject) {
@@ -173,13 +183,21 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GKCh
         colorThemeLight = NSUserDefaults.standardUserDefaults().boolForKey("colorThemeLight")
         if(colorThemeLight){
             colorForText = lightColor
+            viewBGColor = darkColor
+            colorSchemeButtonImg = UIImage(named: "LightButton")!
         } else{
             colorForText = darkColor
+            viewBGColor = lightColor
+            colorSchemeButtonImg = UIImage(named: "DarkButton")!
         }
-        highscoreLabel?.textColor = colorForText
-        totalClickLabel?.textColor = colorForText
-        currentScore?.textColor = colorForText
-        startTextLabel?.textColor = colorForText
+        UIView.animateWithDuration(0.1, animations: {
+            self.view.backgroundColor = viewBGColor
+            self.colorSchemeButton.setImage(colorSchemeButtonImg, forState: .Normal)
+            self.highscoreLabel.textColor = colorForText
+            self.currentScore.textColor = colorForText
+            self.startTextLabel.textColor = colorForText
+            self.userText.textColor = colorForText
+        })
     }
     
     func updateScore(){

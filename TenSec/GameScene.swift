@@ -15,13 +15,14 @@ class GameScene: SKScene {
         self.physicsWorld.gravity.dy = -9.8
 
     }
+    
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         /* Called when a touch begins */
         
         for touch: AnyObject in touches {
             if(gameActive == 1 && gameOver == 0){
                 let location = touch.locationInNode(self)
-                
+
                 let sprite = SKLabelNode (fontNamed: "GillSans")
                 sprite.fontSize = randomNumber()
                 sprite.fontColor = randomUIColor()
