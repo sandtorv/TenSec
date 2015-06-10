@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		524125261B0B245300099511 /* GameHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524125251B0B245300099511 /* GameHelper.swift */; };
-		5286BD251B28613000ED14E3 /* Magic.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5286BD231B28613000ED14E3 /* Magic.sks */; };
-		5286BD261B28613000ED14E3 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 5286BD241B28613000ED14E3 /* spark.png */; };
 		52ABB4581A371EB100347DFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB4571A371EB100347DFB /* AppDelegate.swift */; };
 		52ABB45A1A371EB100347DFB /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 52ABB4591A371EB100347DFB /* GameScene.sks */; };
 		52ABB45C1A371EB100347DFB /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABB45B1A371EB100347DFB /* GameScene.swift */; };
@@ -50,8 +48,6 @@
 
 /* Begin PBXFileReference section */
 		524125251B0B245300099511 /* GameHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameHelper.swift; sourceTree = "<group>"; };
-		5286BD231B28613000ED14E3 /* Magic.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Magic.sks; sourceTree = "<group>"; };
-		5286BD241B28613000ED14E3 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		52ABB4521A371EB100347DFB /* TenSec.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TenSec.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52ABB4561A371EB100347DFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52ABB4571A371EB100347DFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -127,8 +123,6 @@
 				524125251B0B245300099511 /* GameHelper.swift */,
 				52ABB4571A371EB100347DFB /* AppDelegate.swift */,
 				52ABB4591A371EB100347DFB /* GameScene.sks */,
-				5286BD231B28613000ED14E3 /* Magic.sks */,
-				5286BD241B28613000ED14E3 /* spark.png */,
 				52ABB45B1A371EB100347DFB /* GameScene.swift */,
 				52ABB45D1A371EB100347DFB /* GameViewController.swift */,
 				52ABB45F1A371EB100347DFB /* Main.storyboard */,
@@ -285,9 +279,7 @@
 				52E6D9641A3E3A0A00166E73 /* Icon.png in Resources */,
 				52ABB45A1A371EB100347DFB /* GameScene.sks in Resources */,
 				52E6D95E1A3E3A0A00166E73 /* Icon-Small-40@3x.png in Resources */,
-				5286BD261B28613000ED14E3 /* spark.png in Resources */,
 				52E6D9631A3E3A0A00166E73 /* Icon-Small@3x.png in Resources */,
-				5286BD251B28613000ED14E3 /* Magic.sks in Resources */,
 				52E6D9581A3E3A0A00166E73 /* Icon-72.png in Resources */,
 				52E6D9661A3E3A0A00166E73 /* iTunesArtwork@2x.png in Resources */,
 				52ABB4611A371EB100347DFB /* Main.storyboard in Resources */,

@@ -58,7 +58,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GKCh
             userText.text = "Welcome \(GKLocalPlayer.localPlayer().alias)"
             gameCenter.enabled = false
         } else {
-            userText.text = "Welcome to \(UIDevice.currentDevice().name)\n log in to GameCenter to compare your scores"
+            userText.text = "Welcome! \n You are not logged in to Game Center"
             gameCenter.enabled = false
         }
     }
